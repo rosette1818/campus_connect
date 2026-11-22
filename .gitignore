@@ -1,0 +1,15 @@
+.vscode/
+.DS_Store
+Thumbs.db
+
+*.log
+*.tmp
+
+js/config.js
+
+.env
+.env.*
+
+
+node_modules/
+
