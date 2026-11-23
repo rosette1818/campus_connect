@@ -1,0 +1,8 @@
+<!-- Imigongo-style background tile (dark theme): blurred behind the whole page -->
+<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'>
+  <path d='M60 6 114 60 60 114 6 60Z' fill='none' stroke='#EA7A4B' stroke-width='5'/>
+  <path d='M60 26 94 60 60 94 26 60Z' fill='none' stroke='#F5B142' stroke-width='5'/>
+  <path d='M60 44 76 60 60 76 44 60Z' fill='#FDE68A'/>
+  <path d='M0 0 22 0 0 22Z M120 0 98 0 120 22Z M0 120 22 120 0 98Z M120 120 98 120 120 98Z' fill='#22C55E'/>
+  <path d='M38 2 44 10 50 2 M70 2 76 10 82 2 M38 118 44 110 50 118 M70 118 76 110 82 118' fill='none' stroke='#F5B142' stroke-width='3'/>
+</svg>
