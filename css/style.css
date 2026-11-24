@@ -1,4 +1,4 @@
---root {
+:root {
     --bg: #F8FAFC;
     --surface: #FFFFFF;
     --text: #0F172A;
@@ -26,10 +26,10 @@
     --ochre-text: #92400E;
     --placeholder-bg: #FFF7ED;
     --placeholder-border: #FED7AA;
-    --page-pattern: url("../images/diamond-light.svg");
+    --page-pattern: url("../images/diamonds-light.svg");
     --bg-art: url("../images/imigongo-light.svg");
     --bg-glow-1: rgba(217, 119, 6, 0.22);
-    --bg-glow-2: rgba("194, 65, 12, 0,18");
+    --bg-glow-2: rgba(194, 65, 12, 0.18);
     --bg-art-opacity: 0.30;
     --bg-blur: 3px;
     --radius-sm: 8px;
@@ -37,8 +37,8 @@
     --radius-lg: 16px;
     --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
     --shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
-    --shadow-lg: 0 12px, 32px, rgba(13, 23, 42, 0.10);
-    --font: system-ui, -apple-sysytem, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.10);
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --max-width: 1200px;
     color-scheme: light
 }
@@ -49,7 +49,7 @@
     --text: #F1F5F9;
     --text-muted: #94A3B8;
     --border: #26334A;
-    --primary: #F87171;
+    --primary: #60A5FA
     --primary-hover: #93C5FD;
     --primary-soft: #1E2A44;
     --primary-on: #0B1120;
@@ -388,7 +388,7 @@ a {
 
 .btn-primary {
     background: var(--primary);
-    color: var(--primary-on);
+    color: #FFFFFF;
 }
 
 .btn-primary:hover:not(:disabled) {

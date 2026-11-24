@@ -20,7 +20,7 @@
 
     <body>
 
-        <a class="skip-link" href="#main-conent">Skip to main content</a>
+        <a class="skip-link" href="#main-content">Skip to main content</a>
 
         <header class="site-header">
            <nav class="navbar" aria-label="Main navigation">
@@ -42,7 +42,7 @@
                         </a>
                     </li>
                 </ul>
-                <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark Mode"></button>
+                <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark Mode">&#127769</button>
             </div>
 
            </nav>
@@ -51,26 +51,26 @@
 
         <main id="main-content" >
             <section id="discover" class="hero" aria-labelledby="hero-title">
-            <p class="hero-eyebrow" lang="rw" >Ubumenyi ni ubukire. Knowledge is wealth </p>
+            <p class="hero-eyebrow" lang="rw" >Ubumenyi ni ubukire - Knowledge is wealth </p>
             <h1 id="hero-title" class="hero-title">Find your next study resource.</h1>
             <p class="hero-subtitle">
-                Search Millions of academic titles, textbooks, and literature via Open Library.
+                Search millions of academic titles, textbooks, and literature via Open Library.
             </p>  
             
             <form id="search-form" class="search-bar" role="search" novalidate>
-                <label dor="serach-input" class="visually-hidden">Search books</label>
-                <input type="search" id="search-input" class="search-input" name="q" placeholder="Search by title, author, or subject..." max-length="100" autocomplete="off">
+                <label for="search-input" class="visually-hidden">Search books</label>
+                <input type="search" id="search-input" class="search-input" name="q" placeholder="Search by title, author, or subject..." maxlength="100" autocomplete="off">
                 
                 <label for="sort-select" class="visually-hidden">Sort results</label>
                 <select id="sort-select" class="search-select" name="sort">
                     <option value="relevance">Sort: Relevance</option>
-                    <option value="newest">Sort: Newest First</option
+                    <option value="newest">Sort: Newest First</option>
                     <option value="oldest">Sort: Oldest First</option>
                     <option value="department">Sort: Department A-Z</option>
                 </select>
 
                 <label for="department-select" class="visually-hidden">Filter by department</label>
-                <select is="department-select" class="search-select" name="department">
+                <select id="department-select" class="search-select" name="department">
                     <option value="all">All Departments</option>
                     <option value="bus">Business &amp; Economics</option>
                     <option value="cs">Computer Science</option>
@@ -79,7 +79,7 @@
                     <option value="hum">Humanities &amp; Literature</option>
                     <option value="law">Law &amp; Politics</option>
                     <option value="math">Mathematics &amp; Statistics</option>
-                    <option value="med">Medecine &map; Health</option>
+                    <option value="med">Medecine &amp; Health</option>
                     <option value="sci">Natural Sciences</option>
                     <option value="soc">Social Sciences</option>
                 </select>
@@ -88,10 +88,10 @@
                 <select id="filter-select" class="search-select" name="filter">
                     <option value="all">All Books</option>
                     <option value="cover">Has Cover Image</option>
-                    <option value="fulltext">Full text available</option>
+                    <option value="fulltext">Full Text Available</option>
                 </select>
 
-                <buttom type="submit" class="btn btn-primary search-btn">Search</button>
+                <button type="submit" class="btn btn-primary search-btn">Search</button>
             </form>
         </section>
         
@@ -105,12 +105,12 @@
 
             <div id="loading-state" class="loading-state" hidden>
                 <span class="spinner" aria-hidden="true"></span>
-                <p>Searching Open Library ....</p>
+                <p>Searching Open Library ...</p>
             </div>
 
             <div id="empty-results" class="empty-state" hidden>
-                <p class="empty title">NO books matched your search</p>
-                <p class="empty-hint">Try a broader keyword, check the spelling or switch the filter to all Books.</p>                
+                <p class="empty-title">NO books matched your search</p>
+                <p class="empty-hint">Try a broader keyword, check the spelling or switch the filter to "All Books".</p>                
             </div>
 
             <div id="results-grid" class="book-grid" aria-live="polite"></div>
@@ -118,18 +118,22 @@
 
         <section id="reading-list" class="reading-list-section" aria-labelledby="reading-list-title">
             <div class="section-header">
-                <h2 id="reading-list-title" class="section title">My reading List</h2>
-                <button type="button" id="clear-all-btn" class="btn btn-secondary" hodden>Clear all</button>                
+                <h2 id="reading-list-title" class="section-title">My reading List</h2>
+                <button type="button" id="clear-all-btn" class="btn btn-secondary" hidden>Clear all</button>                
             </div>
 
             <div id="reading-list-empty" class="empty-state">
-                <p clas="empty-title">Your reading List is emtpty.</p>
-                <p class="empty-hint">Search for a book above and click "+ Save to List" to keep it here.</p>                           
+                <p class="empty-title">Your reading List is empty.</p>
+                <p class="empty-hint">Search for a book above and click "+ Save to List" to keep it here.</p> 
+                </div>
+                <div id="reading-list-grid" class="book-grid"></div>                          
         </section>
+        </main>
+    
 
         <dialog id="preview-dialog" class="preview-dialog" aria-labelledby="preview-title">
-            <div class="preview header">
-                <h2 id="preview-title">Book Preview</h2>
+            <div class="preview-header">
+                <h2 id="preview-title" class="preview-title">Book Preview</h2>
                 <button type="button" id="preview-close" class="btn btn-secondary">Close</button>
             </div>
 
@@ -139,7 +143,7 @@
                 <p class="preview-note">Free public-domain book, hosted by the Internet Archive</p>
                 <div class="preview-links">
                     <a id="preview-formats" class="btn btn-secondary" href="#" target="_blank" rel="noopener noreferrer">Other formats</a>                
-                    <a id="preview-download" class="btn btn-primary" href="#" target="_blank" rel="noopener noreferre">Download PDF</a>
+                    <a id="preview-download" class="btn btn-primary" href="#" target="_blank" rel="noopener noreferrer">Download PDF</a>
                 </div>
             </div>
         </dialog>
@@ -150,20 +154,20 @@
                 <button type="button" id="details-close" class="btn btn-secondary">Close</button>
             </div>
 
-            <div class="details-body" class="details-body" aria-live="polite"></div>
+            <div id="details-body" class="details-body" aria-live="polite"></div>
 
             <div class="preview-footer">
-                <p class="preview-note">Extra details from the google Books API.</p>
-                <a id="details-link" class="btn btn-primary" href="#" target="_blank" rel="noopener noreferrer" hidden>View in Google Books</a>
+                <p class="preview-note">Extra details from the Google Books API.</p>
+                <a id="details-link" class="btn btn-primary" href="#" target="_blank" rel="noopener noreferrer" hidden>View in Google Books &nearr;</a>
             </div>
         </dialog>
 
         <footer class="site-footer">
             <p>
-                Book data and covers provided by \
-                <a href="https://openlirary.org/developers/api" target="_blank" rel="noopener noreferre">Open Library</a>,
+                Book data and covers provided by 
+                <a href="https://openlibrary.org/developers/api" target="_blank" rel="noopener noreferrer">Open Library</a>,
                 a project of the
-                <a href="https://archive.org" target="_blank" rel="noopener noreferrer">Internet Archive</a>
+                <a href="https://archive.org" target="_blank" rel="noopener noreferrer">Internet Archive</a>.
                 Extra details from the
                 <a href="https://developers.google.com/books" target="_blank" rel="noopener noreferrer">Google Books API</a>
 
@@ -171,6 +175,6 @@
             <p>&copy; 2026 CampusConnect &middot; Built for students, by a student.</p>
         </footer>
         
-        </main>
+    
     </body>
 </html>

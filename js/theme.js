@@ -6,7 +6,7 @@
     function getSavedTheme(){
         try{
             const saved = localStorage.getItem(THEME_KEY);
-            return saved == 'dark' || saved === 'light' ? saved : null;
+            return saved === 'dark' || saved === 'light' ? saved : null;
         } catch {
             return null;
         }
@@ -32,6 +32,7 @@
         const button = document.getElementById('theme-toggle');
         if(button) {
             const isDark = theme === 'dark';
+            button.textContent = isDark ? '\u2600\uFE0f' : '\uD83C\uDF19';
             button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
             button.title = isDark ? 'Light mode' : 'Dark mode';
         }

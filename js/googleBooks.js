@@ -11,7 +11,7 @@ const GoogleBooks = (() => {
     }
 
     function getLocalKey() {
-        const confing = window.CAMPUS_CONFIG;
+        const config = window.CAMPUS_CONFIG;
         return config && typeof config.googleBooksKey === 'string' ? config.googleBooksKey.trim() : '';                
     }
 
@@ -58,15 +58,15 @@ const GoogleBooks = (() => {
         return{
             description: toPlainText(info.description).slice(0, 1500),
             rating: typeof info.averageRating === 'number' ? info.averageRating : null,
-            ratingsCount: Number.isInteger(info.ratingsCount) ? info.ratinngsCount : 0,
-            pageCount: Number.isInteger(info.pagecount) && info.pageCount > 0 ? info.pageCount : null,
+            ratingsCount: Number.isInteger(info.ratingsCount) ? info.ratingsCount : 0,
+            pageCount: Number.isInteger(info.pageCount) && info.pageCount > 0 ? info.pageCount : null,
             publisher: typeof info.publisher === 'string' ? info.publisher : '',
             publishedDate: typeof info.publishedDate === 'string' ? info.publishedDate : '',
             categories: Array.isArray(info.categories)
             ? info.categories.filter((c) => typeof c === 'string').slice(0, 3)
             : [],
             language: typeof info.language === 'string' ? info.language.toUpperCase() : '',
-            link: safeGoogleLink(info.previewlink) || safeGoogleLink(info.infoLink),
+            link: safeGoogleLink(info.previewLink) || safeGoogleLink(info.infoLink),
         };
     }
 
@@ -83,25 +83,25 @@ const GoogleBooks = (() => {
 
         const url = buildUrl(buildQuery(book));
         if (!url) {
-            throw new Error('Extra details need a Google Books API key. Add it to js/config.js(see README, "Google Books API key".');
+            throw new Error('Extra details need a Google Books API key. Add it to js/config.js(see README, "Google Books API key").');
 
         }
 
         const controller = new AbortController();
-        const timer = setTimeot(() => controller.abort(), TIMEOUT_MS);
+        const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
         let response;
         try {
             response = await fetch(url, { signal: controller.signal });
         } catch (err) {
             throw new Error(err.name === 'AbortError'
                 ? 'Google Books is taking too long to respond. Please try again.'
-                : 'Could not reach Google Books. Please check your internet connection');            
+                : 'Could not reach Google Books. Please check your internet connection.');            
         } finally {
             clearTimeout(timer);
         }
 
         if(response.status === 400 || response.status === 403) {
-            throw new Error('Google Books refused the request: The API key is missing, invalid, or overa daily limit.');
+            throw new Error('Google Books refused the request: the API key is missing, invalid, or over a daily limit.');
         } 
         if (response.status === 429) {
             throw new Error('Too many requests to Google Books. Please wait a moment and try again.');
