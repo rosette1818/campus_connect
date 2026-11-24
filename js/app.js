@@ -41,6 +41,7 @@
         total: 0,
         fromCache: false,
         isLoading: false,
+        featured: false,
     };
 
 
@@ -248,7 +249,7 @@
 
         if (details.rating) {
             const stars = Math.round(details.rating);
-            addFact('Rating', `${'\u2605'.repeat(stars)}${'\u2606'.repeat(5 - stars)} ${details.rating}/5 $({details.ratingsCount} ratings)`);
+            addFact('Rating', `${'\u2605'.repeat(stars)}${'\u2606'.repeat(5 - stars)} ${details.rating}/5 (${details.ratingsCount} ratings)`);
         } else {
             addFact('Rating', 'No Ratings on Google Books yet!');
         }
@@ -374,6 +375,7 @@ function renderResults() {
 
         let meta =`Showing ${visible.length} of ${state.total.toLocaleString()} results for "${state.query}"`;
         if (state.fromCache) meta += ' loaded instantly from cache';
+        if (state.featured) meta = `Featured topic: "${state.query}"  search above to find your own books`;
         els.resultsMeta.textContent = meta;
         const fragment = document.createDocumentFragment();
         visible.forEach((book) => fragment.append(createBookCard(book, 'results')));
@@ -403,6 +405,25 @@ function renderReadingList() {
     syncSaveButtons();
 }
 
+const FEATURED_TOPICS = ['computer science', 'mathematics', 'african literature', 'economics', 'biology', 'engineering'];
+
+async function loadFeaturedBooks() {
+    const topic = FEATURED_TOPICS[Math.floor(Math.random() * FEATURED_TOPICS.length)];
+    setLoading(true);
+    try {
+        const result= await CampusAPI.searchBooks(topic);
+        state.query = topic;
+        state.books = result.books;
+        state.total = result.total;
+        state.fromCache = result.fromCache;
+        state.featured = true;
+    } catch {
+        state.query = '';
+    }
+    setLoading(false);
+    renderResults();
+}
+
 async function handleSearch(event) {
     event.preventDefault();
     if (state.isLoading) return;
@@ -424,6 +445,7 @@ async function handleSearch(event) {
         state.books = result.books;
         state.total = result.total;
         state.fromCache = result.fromCache;
+        state.featured = false; 
         
     } catch (error) {
         setLoading(false);
@@ -476,8 +498,9 @@ window.addEventListener('storage', (event) => {
     if (event.key === null || event.key === ReadingList.STORAGE_KEY) renderReadingList();
 });
 
-renderResults();
+loadFeaturedBooks();
 renderReadingList();
+
 
 
 
