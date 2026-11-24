@@ -249,7 +249,10 @@
         if (details.rating) {
             const stars = Math.round(details.rating);
             addFact('Rating', `${'\u2605'.repeat(stars)}${'\u2606'.repeat(5 - stars)} ${details.rating}/5 $({details.ratingsCount} ratings)`);
+        } else {
+            addFact('Rating', 'No Ratings on Google Books yet!');
         }
+
         addFact('Pages', details.pageCount ? String(details.pageCount) : '');
         addFact('Publisher', details.publisher);
         addFact('Published', details.publishedDate);
