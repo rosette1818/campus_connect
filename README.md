@@ -2,8 +2,8 @@
 
 A web app that helps students find study books, search millions of titles, filter them by university departments, read or download books, see ratings and keep a personal reading list.
 
-- **Live app (load balancer): ** https://www.umurerwa.tech 
-- **Demo Video: ** `< >`
+- **Live app (load balancer):** https://www.umurerwa.tech 
+- **Demo Video:** `https://go.screenpal.com/watch/cOXTQmn47YK`
 
 
 ---
